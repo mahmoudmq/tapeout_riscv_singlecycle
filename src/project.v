@@ -27,7 +27,7 @@ module tt_um_example (
   always @(*) begin
       case (result[31:8])
           24'h000000: uo_out = result[7:0]; // Connect the lower 8 bits of the result to the output
-          24'h000001: uo_out  = ui_in[3:0] + ui_in[7:5];
+          24'h000001: uo_out  = ui_in[7:0] + ui_in[7:0];
           default:uo_out = 8'b0; // Default case to prevent latches
       endcase
   end

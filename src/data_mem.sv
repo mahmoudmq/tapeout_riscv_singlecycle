@@ -16,7 +16,7 @@ module data_mem #(
 
     always @(posedge clk) begin
         if (WriteEnable) begin
-            memory[Address[ADDR_WIDTH-1:0]] = WriteData; // Write data to memory
+            memory[Address[ADDR_WIDTH-1:0]] <= WriteData; // Write data to memory
         end
     end
 

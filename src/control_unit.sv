@@ -115,7 +115,7 @@ module control_unit (
                     end
                 endcase
             end
-            default: ALUControl = 3'bxxx; // Invalid ALUOp code    
+            default: ALUControl = 3'b000; // Invalid ALUOp code    
         endcase
     end
 endmodule

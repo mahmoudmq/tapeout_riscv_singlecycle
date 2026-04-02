@@ -24,7 +24,10 @@ module tt_um_example (
     .result(result)
   );
 
-  always @(*) begin
+  always @(posedge clk, negedge rst_n) begin
+      if (!rst_n) begin
+          uo_out = ui_in[7:0] - ui_in[7:0];
+      end else
       case (result[31:8])
           24'h000000: uo_out = result[7:0]; // Connect the lower 8 bits of the result to the output
           24'h000001: uo_out  = ui_in[7:0] + ui_in[7:0];

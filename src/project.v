@@ -19,15 +19,15 @@ module tt_um_example (
   logic [31:0] result;
   // instantiate top module
   top top_inst (
-    .clk(ui_in[0]),
-    .reset_n(ui_in[1]),
+    .clk(clk),
+    .reset_n(rst_n),
     .result(result)
   );
 
   always @(*) begin
       case (result[31:8])
           24'h000000: uo_out = result[7:0]; // Connect the lower 8 bits of the result to the output
-          24'h000001: uo_out = 8'b1; // Example: Output a constant value when the upper bits are 0x000001
+          24'h000001: uo_out  = ui_in[3:0] + ui_in[7:5];
           default:uo_out = 8'b0; // Default case to prevent latches
       endcase
   end
@@ -35,6 +35,6 @@ module tt_um_example (
   assign uio_oe = 8'b0; // Set all bidirectional pins to input mode (not used)
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, clk, rst_n, 1'b0, ui_in, uio_in};
+  wire _unused = &{ena, 1'b0, uio_in[7:0]};
 
 endmodule

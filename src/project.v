@@ -24,7 +24,13 @@ module tt_um_example (
     .result(result)
   );
 
-  assign uo_out = result[7:0]; // Connect the lower 8 bits of the result to the output
+  always @(*) begin
+      case (result[31:8]):
+          24'h000000: uo_out = result[7:0]; // Connect the lower 8 bits of the result to the output
+          24'h000001: uo_out = 24'h000001; // Example: Output a constant value when the upper bits are 0x000001
+          default:uo_out = 8'b0; // Default case to prevent latches
+      endcase
+  end
   assign uio_out = 8'b0; // Set all bidirectional outputs to 0 (not used)
   assign uio_oe = 8'b0; // Set all bidirectional pins to input mode (not used)
 

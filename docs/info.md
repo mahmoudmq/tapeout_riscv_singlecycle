@@ -9,12 +9,12 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+This a simple risc-v core with preloaded instructions given below.. input a certain number from 0 to 15 and you will see a different output based on the instruction you pointed to.
 
 ## How to test
 
-Explain how to use your project
+Just input a certain number to refer to the instruction you want to operate
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+LEDs would be useful to visualize the output.. A logic analyzer could be used as well.

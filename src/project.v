@@ -25,9 +25,10 @@ module tt_um_example (
   );
 
   assign uo_out = result[7:0]; // Connect the lower 8 bits of the result to the output
+  assign uio_out = 8'b0; // Set all bidirectional outputs to 0 (not used)
+  assign uio_oe = 8'b0; // Set all bidirectional pins to input mode (not used)
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, clk, rst_n, 1'b0, ui_in[2], ui_in[3], ui_in[4], ui_in[5], ui_in[6], ui_in[7],
-                   uio_in, uio_out, uio_oe};
+  wire _unused = &{ena, clk, rst_n, 1'b0, ui_in, uio_in};
 
 endmodule

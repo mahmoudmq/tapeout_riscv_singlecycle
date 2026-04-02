@@ -7,7 +7,7 @@
 
 module tt_um_example (
     input  wire [7:0] ui_in,    // Dedicated inputs
-    output wire [7:0] uo_out,   // Dedicated outputs
+    output reg [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
     output wire [7:0] uio_out,  // IOs: Output path
     output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
@@ -27,7 +27,7 @@ module tt_um_example (
   always @(*) begin
       case (result[31:8])
           24'h000000: uo_out = result[7:0]; // Connect the lower 8 bits of the result to the output
-          24'h000001: uo_out = 24'h000001; // Example: Output a constant value when the upper bits are 0x000001
+          24'h000001: uo_out = 8'b1; // Example: Output a constant value when the upper bits are 0x000001
           default:uo_out = 8'b0; // Default case to prevent latches
       endcase
   end
